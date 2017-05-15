@@ -90,6 +90,9 @@ define([
             if (settings.searchAccess) {
                 q += ' AND access:' + settings.searchAccess;
             }
+            if (settings.updateDate) {
+                 q += ' AND uploaded:' + '[000000' +  Date.parse(settings.updateDate).toString() + ' TO ' + '000000' + Date.now().toString() + ']';
+            }
             var params = {
                 q: q,
                 //v: this._options.arcgisRestVersion,
