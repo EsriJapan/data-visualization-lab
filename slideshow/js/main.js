@@ -47,7 +47,17 @@ require([
     $('#modal').modal('show');
 
 	function initApp() {
+
+            var updateDate = null;
+            var urlParams = location.hash.substring(1).split('&');
+            urlParams.forEach(function (v) {
+                param = v.split('=');
+                if(param[0] == 'date') {
+                    updateDate = param[1];
+                }});
+
         var query = new DataVizQuery({
+            
             settings: {
                 //id_group: d.group,
                 searchType: d.searchType,
@@ -60,7 +70,8 @@ require([
                 keywords: d.keywords,
                 perPage: parseInt(d.galleryItemsPerPage, 10),
                 layout: d.defaultLayout,
-                searchAccess: d.searchAccess//,
+                searchAccess: d.searchAccess,
+                updateDate: updateDate//,
                 //token: portalUser.credential.token
             },
             oauthInfo: info 
