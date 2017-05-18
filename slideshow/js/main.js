@@ -113,6 +113,7 @@ require([
         setInterval(function() {
             domStyle.set("mapView", { "opacity": 0 });
             setTimeout(function() {
+                map.destroy();
                 domConstruct.destroy("mapView");
                 domConstruct.create("div", { "id": "mapView" }, "mapContainer", "first");
                 domStyle.set("mapView", { "opacity": 0 });
